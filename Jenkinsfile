@@ -30,32 +30,32 @@ pipeline {
                 }
             }
         }
-//        
-//        stage('Tag Docker Image for Private Registry') {
-//            steps {
-//                script {
-//                    sh "docker image tag ${PROM_LOCAL_IMG}:build ${PROM_IMAGE}"
-//                    //validate the usage og immage_tag variable in this line
-//                    echo "Image tagged for private registry as ${PROM_IMAGE}:${IMAGE_TAG}"
-//
-//                    sh "docker image tag ${GRAF_LOCAL_IMG}:build ${GRAF_IMAGE}"
-//                    //validate the usage og immage_tag variable in this line
-//                    echo "Image tagged for private registry as ${GRAF_IMAGE}:${IMAGE_TAG}"
-//                }
-//            }
-//        }
-//        
-//        stage('Push Docker Image') {
-//            steps {
-//                script {
-//                    // Push the tagged image to the private registry
-//                    docker.withRegistry("http://${DOCKER_REGISTRY}") {
-//                        docker.image("${PROM_IMAGE}").push()
-//                        docker.image("${GRAF_IMAGE}").push()
-//                    }
-//                }
-//            }
-//        }
+        
+        stage('Tag Docker Image for Private Registry') {
+            steps {
+                script {
+                    sh "docker image tag ${PROM_LOCAL_IMG}:build ${PROM_IMAGE}"
+                    //validate the usage og immage_tag variable in this line
+                    echo "Image tagged for private registry as ${PROM_IMAGE}:${IMAGE_TAG}"
+
+                    sh "docker image tag ${GRAF_LOCAL_IMG}:build ${GRAF_IMAGE}"
+                    //validate the usage og immage_tag variable in this line
+                    echo "Image tagged for private registry as ${GRAF_IMAGE}:${IMAGE_TAG}"
+                }
+            }
+        }
+        
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Push the tagged image to the private registry
+                    docker.withRegistry("http://${DOCKER_REGISTRY}") {
+                        docker.image("${PROM_IMAGE}").push()
+                        docker.image("${GRAF_IMAGE}").push()
+                    }
+                }
+            }
+        }
 //
 //
 //        // LOAD KUBECONFIG FILE FROM CREDENTIALS WE CREATED EARLIER
