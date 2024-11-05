@@ -21,15 +21,15 @@ pipeline {
             }
         }
         
-//        stage('Build Docker Image') {
-//            steps {
-//                script {
-//                    // Build the Docker image with a tag
-//                    docker.build("${PROM_LOCAL_IMG}:build", "-f Dockerfile.prom .")
-//                    docker.build("${GRAF_LOCAL_IMG}:build", "-f Dockerfile.graf .")
-//                }
-//            }
-//        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image with a tag
+                    docker.build("${PROM_LOCAL_IMG}:build", "-f Dockerfile.prom .")
+                    docker.build("${GRAF_LOCAL_IMG}:build", "-f Dockerfile.graf .")
+                }
+            }
+        }
 //        
 //        stage('Tag Docker Image for Private Registry') {
 //            steps {
