@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     sh 'ls -lart'
-                    sh 'docker ps'
+                    sh 'sudo docker ps'
                 }
             }
         }
